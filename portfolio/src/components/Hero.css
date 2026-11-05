@@ -52,3 +52,49 @@
     padding: 25svh 1rem 3rem;
   }
 }
+
+/* Animatie */
+/* Infaden bij laden */
+.hero-line {
+  display: block;
+  animation: hero-in 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.hero-line:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+@keyframes hero-in {
+  from {
+    opacity: 0;
+    transform: translateY(40%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Uitfaden bij scrollen */
+@supports (animation-timeline: scroll()) {
+  .hero-title {
+    animation: hero-out linear both;
+    animation-timeline: scroll();
+    animation-range: 0 60vh;
+  }
+
+  @keyframes hero-out {
+    to {
+      opacity: 0;
+      transform: translateY(-20%);
+    }
+  }
+}
+
+/* Geen animatie als iemand dat uit heeft staan */
+@media (prefers-reduced-motion: reduce) {
+  .hero-line,
+  .hero-title {
+    animation: none;
+  }
+}

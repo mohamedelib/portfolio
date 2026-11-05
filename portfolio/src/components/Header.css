@@ -1,7 +1,7 @@
 /* Mobile */
 header {
   display: flex;
-  justify-content: space-between;
+  justify-content: end;
   align-items: center;
   padding: 1.5rem 1rem;
   color: var(--text);
@@ -52,6 +52,9 @@ ul {
 }
 
 @media (min-width: 48em) {
+  [popover] {
+    overflow: visible;
+  }
   header {
     padding-inline: 2.5rem;
   }
@@ -61,7 +64,9 @@ ul {
   }
 
   header a {
-    font-size: 16px;
+    font-size: 20px;
+    display: inline-block;
+    padding: 1.5rem;
   }
 
   [popover] {

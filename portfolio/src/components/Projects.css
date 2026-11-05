@@ -1,34 +1,33 @@
 .projects {
   --pad: 20px;
-  background: #1C1515;
-  color: #FAF7F2;
+  background: var(--background);
+  color: #faf7f2;
 
-  &>header {
+  & > header {
     display: flex;
     flex-direction: column;
     padding: 48px var(--pad) 32px;
-    border-bottom: 1px solid #3A3335;
   }
 
-  &>header>p,
-  & li>.meta,
-  & li>footer {
-    letter-spacing: .06em;
+  & > header > p,
+  & li > .meta,
+  & li > footer {
+    letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: #A39C95;
+    color: #a39c95;
   }
 
   & h1 {
     margin: 24px 0 0;
     font-size: clamp(50px, 14vw, 176px);
     font-weight: 800;
-    line-height: .82;
-    letter-spacing: -.06em;
+    line-height: 0.82;
+    letter-spacing: -0.06em;
     text-transform: uppercase;
-    color: #E8475B;
+    color: #e8475b;
   }
 
-  &>ul {
+  & > ul {
     list-style: none;
     margin: 0;
     padding: 40px var(--pad) 96px;
@@ -43,49 +42,45 @@
       margin-left: auto;
     }
 
-    &>img {
+    & > img {
       display: block;
       object-fit: contain;
       width: 100%;
       height: auto;
       aspect-ratio: 4 / 3;
       margin-bottom: 20px;
-      background: #0652DD;
-
-
+      background: #0652dd;
     }
 
-    &:nth-child(2)>img {
+    &:nth-child(2) > img {
       background: #a01838;
     }
 
-    &:nth-child(3)>img {
+    &:nth-child(3) > img {
       background: var(--border);
     }
 
-
-
-    &>.meta {
-      color: #E8475B;
+    & > .meta {
+      color: #e8475b;
     }
 
-    &>h2 {
+    & > h2 {
       margin: 10px 0 0;
       font-size: clamp(30px, 4vw, 44px);
       font-weight: 800;
-      line-height: .95;
-      letter-spacing: -.03em;
+      line-height: 0.95;
+      letter-spacing: -0.03em;
     }
 
-    &>.description {
+    & > .description {
       margin: 14px 0 0;
       max-width: 46ch;
       font-size: 17px;
       line-height: 1.55;
-      color: #C9C2BA;
+      color: #c9c2ba;
     }
 
-    &>footer {
+    & > footer {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
@@ -94,24 +89,24 @@
     }
 
     & a {
-      color: #FAF7F2;
-      text-underline-offset: .35em;
+      color: #faf7f2;
+      text-underline-offset: 0.35em;
     }
 
     & a:hover {
-      color: #E8475B;
+      color: #e8475b;
     }
   }
 
   @media (min-width: 768px) {
     --pad: 32px;
 
-    &>header {
+    & > header {
       padding-top: 80px;
       align-items: end;
     }
 
-    &>ul {
+    & > ul {
       gap: 96px;
       padding-top: 64px;
     }
@@ -124,7 +119,7 @@
   @media (min-width: 1024px) {
     --pad: 40px;
 
-    &>ul {
+    & > ul {
       gap: 128px;
       padding-bottom: 160px;
     }

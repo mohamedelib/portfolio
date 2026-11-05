@@ -1,0 +1,49 @@
+/* Mobile (basis) */
+:root {
+  --color-paper: #faf7f2;
+  --color-accent-dark: #ba1f33;
+  --color-ink: #1c1515;
+}
+.site-footer {
+  padding: 3rem 1.25rem;
+  background: var(--color-accent-dark);
+  color: var(--color-paper);
+}
+
+.footer-cta {
+  display: inline-block;
+  font-family: var(--font-base);
+  color: inherit;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: clamp(3rem, 1rem + 8vw, 11rem);
+  line-height: 0.85;
+}
+
+.footer-cta:hover,
+.footer-cta:focus-visible {
+  color: var(--background);
+  text-decoration: underline;
+  text-underline-offset: 0.1em;
+}
+
+.footer-cta:focus-visible {
+  outline: 2px solid var(--color-paper);
+  outline-offset: 0.25rem;
+}
+
+/* Medium (768px) */
+@media (min-width: 48em) {
+  .site-footer {
+    padding: 4rem 2rem;
+  }
+}
+
+/* Large (1280px) */
+@media (min-width: 80em) {
+  .site-footer {
+    padding: 6rem 2.5rem;
+  }
+}
