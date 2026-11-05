@@ -8,8 +8,7 @@ export default function Hero() {
         El Ibrahymy
       </h1>
       <p>
-        Ik bouw snelle, toegankelijke websites en webapps voor kleine bedrijven
-        en bureaus.
+        Ik bouw snelle, toegankelijke websites voor kleine bedrijven en bureaus.
       </p>
       <footer>
         <a href="#projecten">Projecten</a>
