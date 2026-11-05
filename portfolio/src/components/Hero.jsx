@@ -12,7 +12,6 @@ export default function Hero() {
         en bureaus.
       </p>
       <footer>
-        <a href="#projecten">Projecten</a>
       </footer>
     </section>
   );
