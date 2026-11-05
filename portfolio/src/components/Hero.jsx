@@ -11,7 +11,6 @@ export default function Hero() {
         Ik bouw snelle, toegankelijke websites voor kleine bedrijven en bureaus.
       </p>
       <footer>
-        <a href="#projecten">Projecten</a>
       </footer>
     </section>
   );
