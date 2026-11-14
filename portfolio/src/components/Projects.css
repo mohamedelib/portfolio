@@ -1,4 +1,6 @@
 .projects {
+  position: relative;
+  background: var(--color-dark);
   --pad: 20px;
   background: var(--background);
   color: #faf7f2;
