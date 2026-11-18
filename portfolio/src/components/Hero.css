@@ -18,7 +18,7 @@
     text-transform: uppercase;
   }
 
-  > p {
+  .hero-content > p {
     margin-block: 1.5rem;
     max-width: none;
     font-size: clamp(1.125rem, 2.5vw, 1.75rem);
@@ -38,6 +38,16 @@
 
   footer a::before {
     content: "↓ " / "";
+  }
+
+  /* Tot 1024px: schermhoog, gecentreerd en sticky */
+  @media (width < 64em) {
+    position: sticky;
+    top: 0;
+    min-height: 100svh;
+    display: grid;
+    align-content: center;
+    text-align: center;
   }
 
   @media (min-width: 48em) {
@@ -77,6 +87,7 @@
 
 /* Uitfaden bij scrollen */
 @supports (animation-timeline: scroll()) {
+  /* Vanaf 1024px: alleen de titel, zoals het was */
   .hero-title {
     animation: hero-out linear both;
     animation-timeline: scroll();
@@ -89,12 +100,33 @@
       transform: translateY(-20%);
     }
   }
+
+  /* Tot 1024px: de hele inhoud wordt kleiner en vervaagt */
+  @media (width < 64em) {
+    .hero-title {
+      animation: none;
+    }
+
+    .hero-content {
+      animation: hero-out-small linear both;
+      animation-timeline: scroll();
+      animation-range: 0 100svh;
+    }
+  }
+
+  @keyframes hero-out-small {
+    to {
+      opacity: 0;
+      scale: 0.8;
+    }
+  }
 }
 
 /* Geen animatie als iemand dat uit heeft staan */
 @media (prefers-reduced-motion: reduce) {
   .hero-line,
-  .hero-title {
+  .hero-title,
+  .hero-content {
     animation: none;
   }
 }
