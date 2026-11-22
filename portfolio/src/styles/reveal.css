@@ -13,10 +13,10 @@
 
 [data-reveal='mask'] {
 	display: block;
-	/* clip-path in plaats van overflow: hidden. De padding geeft ruimte aan letters en onderstreping */
+	/* clip-path in plaats van overflow: hidden. Padding met negatieve margin geeft letters ruimte, zodat ze niet worden afgeknipt */
 	clip-path: inset(0);
-	padding-bottom: 0.2em;
-	margin-bottom: -0.2em;
+	padding: 0 0.1em 0.2em;
+	margin: 0 -0.1em -0.2em;
 
 	> * {
 		display: block;

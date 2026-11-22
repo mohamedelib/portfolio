@@ -10,13 +10,15 @@
 		line-height: 0.85;
 		letter-spacing: -0.05em;
 		text-decoration: none;
+		/* Eén balk onder de hele link i.p.v. underline per regel, die overlapt door de krappe line-height */
+		padding-bottom: 0.15em;
+		border-bottom: 0.1em solid transparent;
 
 		/* Geen rode hover zoals andere links: dat is onleesbaar op de rode achtergrond */
 		&:hover,
 		&:focus-visible {
 			color: var(--text);
-			text-decoration: underline;
-			text-underline-offset: 0.1em;
+			border-color: currentColor;
 		}
 
 		&:focus-visible {
