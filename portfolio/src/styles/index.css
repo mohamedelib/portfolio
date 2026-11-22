@@ -44,6 +44,17 @@ body {
 	font-family: var(--font-base);
 }
 
+/* Secties schuiven op mobiel over de sticky hero heen, daarom een eigen achtergrond */
+main > section {
+	position: relative;
+	padding: 3rem var(--page-padding);
+	background: var(--background);
+
+	@media (min-width: 48em) {
+		padding-block: 5rem;
+	}
+}
+
 h1,
 h2,
 h3 {
@@ -60,6 +71,7 @@ h1 {
 }
 
 h2 {
+	margin-bottom: 2.5rem;
 	font-size: clamp(2rem, 6vw, 3.5rem);
 	text-transform: uppercase;
 }
