@@ -1,10 +1,15 @@
-import { createRoot } from "react-dom/client";
-import { BrowserRouter } from "react-router";
-import App from "./App";
-import "./styles/index.css";
+import { createRoot, hydrateRoot } from 'react-dom/client'
+import './styles/index.css'
+import App from './App'
 
-createRoot(document.getElementById("root")).render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>,
-);
+const root = document.getElementById('root')
+// '/contact/' en '/contact' zijn dezelfde pagina
+const path = location.pathname.replace(/(.)\/$/, '$1')
+const app = <App path={path} />
+
+// In de build staat de HTML er al (prerender), dan alleen JavaScript eraan koppelen
+if (root.firstElementChild) {
+	hydrateRoot(root, app)
+} else {
+	createRoot(root).render(app)
+}
