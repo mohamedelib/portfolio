@@ -1,61 +1,42 @@
-import { useEffect } from "react";
-import { NavLink, useLocation } from "react-router";
-import "./Header.css";
+import './Header.css'
 
 const links = [
-  { to: "/", label: "Home" },
-  { to: "/#projects", label: "Projects" },
-  { to: "/contact", label: "Contact" },
-];
+	{ href: '/', label: 'Home' },
+	{ href: '/#projects', label: 'Projects' },
+	{ href: '/contact', label: 'Contact' },
+]
 
-export default function Header() {
-  const { pathname, hash } = useLocation();
+export default function Header({ path }) {
+	return (
+		<header className="site-header">
+			<nav data-reveal="up" data-reveal-load style={{ '--delay': '0.6s' }}>
+				<button type="button" popoverTarget="menu">
+					Menu
+				</button>
 
-  // Scrollen naar #projects wanneer de URL verandert
-  useEffect(() => {
-    if (hash) {
-      document
-        .getElementById(hash.slice(1))
-        ?.scrollIntoView({ behavior: "smooth" });
-    }
-  }, [pathname, hash]);
+				<ul id="menu" popover="auto">
+					{links.map(({ href, label }) => (
+						<li key={href}>
+							<a
+								href={href}
+								aria-current={href === path ? 'page' : undefined}
+								onClick={closeMenu}
+							>
+								{label}
+							</a>
+						</li>
+					))}
+				</ul>
+			</nav>
+		</header>
+	)
+}
 
-  function handleClick(to) {
-    // Menu sluiten op mobiel
-    const menu = document.getElementById("menu");
-    if (menu.matches(":popover-open")) menu.hidePopover();
+// Progressive enhancement: sluit het mobiele menu na een klik op een link
+function closeMenu(event) {
+	const menu = event.currentTarget.closest('[popover]')
 
-    // Ook scrollen als je nogmaals op dezelfde link klikt
-    const [, id] = to.split("#");
-    if (id) document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-  }
-
-  function getClassName(to) {
-    const [path, id = ""] = to.split("#");
-    const isActive = pathname === path && hash === (id ? `#${id}` : "");
-    return isActive ? "active" : "";
-  }
-
-  return (
-    <header>
-      <nav>
-        <button popoverTarget="menu">Menu</button>
-
-        <ul id="menu" popover="auto">
-          {links.map((link) => (
-            <li key={link.to}>
-              <NavLink
-                to={link.to}
-                end
-                className={() => getClassName(link.to)}
-                onClick={() => handleClick(link.to)}
-              >
-                {link.label}
-              </NavLink>
-            </li>
-          ))}
-        </ul>
-      </nav>
-    </header>
-  );
+	if (menu?.hidePopover && menu.matches(':popover-open')) {
+		menu.hidePopover()
+	}
 }

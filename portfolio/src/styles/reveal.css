@@ -1,0 +1,61 @@
+/*
+	Reveal-animaties (progressive enhancement)
+	- data-reveal="up": fadet in en schuift omhoog
+	- data-reveal="mask": kind-element schuift omhoog uit een masker (tekstregels)
+	- data-reveal="image": afbeelding wordt van onder naar boven onthuld
+	Vertraging per element via style={{ '--delay': '0.2s' }}
+	Zonder JavaScript of met prefers-reduced-motion is alles direct zichtbaar.
+*/
+
+:root {
+	--ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-reveal='mask'] {
+	display: block;
+	/* clip-path in plaats van overflow: hidden. De padding geeft ruimte aan letters en onderstreping */
+	clip-path: inset(0);
+	padding-bottom: 0.2em;
+	margin-bottom: -0.2em;
+
+	> * {
+		display: block;
+	}
+}
+
+/* Progressive enhancement: alleen verbergen als JavaScript draait (scripting: Baseline 2023) */
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+	[data-reveal],
+	[data-reveal='mask'] > * {
+		transition-delay: var(--delay, 0s);
+		transition-duration: 1.2s;
+		transition-timing-function: var(--ease-out-expo);
+	}
+
+	[data-reveal='up'] {
+		transition-property: opacity, translate;
+
+		&:not(.is-visible) {
+			opacity: 0;
+			translate: 0 2.5rem;
+		}
+	}
+
+	[data-reveal='mask'] > * {
+		transition-property: translate;
+	}
+
+	[data-reveal='mask']:not(.is-visible) > * {
+		translate: 0 110%;
+	}
+
+	[data-reveal='image'] {
+		transition-property: clip-path, scale;
+		transition-duration: 1.5s;
+
+		&:not(.is-visible) {
+			clip-path: inset(100% 0 0 0);
+			scale: 1.08;
+		}
+	}
+}

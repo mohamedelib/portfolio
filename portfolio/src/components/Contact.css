@@ -1,0 +1,56 @@
+.contact {
+	display: grid;
+	align-content: center;
+	gap: 1.5rem;
+	min-height: 70svh;
+	padding: 1.5rem var(--page-padding) 6rem;
+
+	/* Laad-puntjes die één voor één verschijnen */
+	h1 span::after {
+		display: inline-block;
+		content: '...';
+		/* Progressive enhancement: alt-tekst voor content (Baseline 2024), zodat de puntjes niet worden voorgelezen */
+		content: '...' / '';
+	}
+
+	p {
+		font-size: clamp(1.125rem, 2.5vw, 1.75rem);
+	}
+
+	/* Laadbalk */
+	&::after {
+		content: '';
+		height: 0.25rem;
+		background: linear-gradient(90deg, var(--accent), var(--accent)) no-repeat
+			var(--border);
+		background-size: 30% 100%;
+	}
+
+	@media (prefers-reduced-motion: no-preference) {
+		h1 span::after {
+			animation: loading-dots 1.4s steps(4, jump-none) infinite;
+		}
+
+		&::after {
+			animation: loading-bar 1.6s ease-in-out infinite alternate;
+		}
+	}
+}
+
+@keyframes loading-dots {
+	from {
+		clip-path: inset(0 100% 0 0);
+	}
+	to {
+		clip-path: inset(0);
+	}
+}
+
+@keyframes loading-bar {
+	from {
+		background-position: 0 0;
+	}
+	to {
+		background-position: 100% 0;
+	}
+}
