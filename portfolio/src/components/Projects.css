@@ -15,18 +15,31 @@
 		}
 	}
 
+	/* Afbeelding als kaart: logo met ruimte eromheen en zoom bij hover */
 	picture {
 		display: block;
 		margin-bottom: 1.25rem;
+		/* clip-path in plaats van overflow: hidden, zodat de zoom binnen het kader blijft */
+		clip-path: inset(0);
 	}
 
 	img {
 		display: block;
 		width: 100%;
 		height: auto;
+		padding: 12%;
 		aspect-ratio: 4 / 3;
 		object-fit: contain;
 		background: var(--image-background, var(--border));
+
+		@media (prefers-reduced-motion: no-preference) {
+			transition: scale 0.8s var(--ease-out-expo);
+		}
+	}
+
+	li:hover img,
+	li:focus-within img {
+		scale: 1.05;
 	}
 
 	h3 {

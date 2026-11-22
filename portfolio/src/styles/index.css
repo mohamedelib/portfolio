@@ -33,6 +33,15 @@
 }
 
 html {
+	/* Scrollbar verbergen, scrollen blijft werken.
+	Progressive enhancement: scrollbar-width is newly available (Baseline 2024) */
+	scrollbar-width: none;
+
+	/* Fallback voor oudere Safari- en Chrome-versies */
+	&::-webkit-scrollbar {
+		display: none;
+	}
+
 	@media (prefers-reduced-motion: no-preference) {
 		scroll-behavior: smooth;
 	}
